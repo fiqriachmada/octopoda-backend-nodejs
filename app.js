@@ -6,7 +6,7 @@ const bodyParser = require('body-parser');
 const getUsers = require('./app/api/v1/users/getUsers');
 
 const app = express();
-const port = 5000;
+const port = process.env.SERVER_PORT || 5000;
 
 app.use(cors());
 
