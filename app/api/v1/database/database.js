@@ -10,7 +10,7 @@ const databaseName = process.env.DATABASE_NAME;
 const databaseUser = process.env.DATABASE_USER;
 const databasePassword = process.env.DATABASE_PASSWORD;
 
-const config = {
+const config = new pg.Pool({
   host: databaseHost,
   port: databasePort,
   database: databaseName,
@@ -21,22 +21,21 @@ const config = {
     ca: fs.readFileSync('./root.crt').toString(),
   },
   connectionTimeoutMillis: 5000,
+});
+
+const connection = async () => {
+  return await getConnection();
 };
 
-async function connect(callbackHandler) {
+async function getConnection() {
   console.log('>>>> Connecting to YugabyteDB!');
-
   try {
-    client = new pg.Client(config);
-
-    await client.connect();
-
-    console.log('>>>> Connected to YugabyteDB!');
-
-    callbackHandler(null, client);
+    console.log('>>>> Connected to YugabyteDB! with Host '+ databaseHost);
+    return await config.connect();
   } catch (err) {
-    callbackHandler(err);
+    console.log('>>>> Connection Failed to YugabyteDB! with Host '+ databaseHost, 'Error: ');
+    console.log(err);
   }
 }
 
-module.exports = { connect };
+module.exports = { connection };

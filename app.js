@@ -15,14 +15,12 @@ app.use(bodyParser.json());
 
 app.get('/', (req, res) => {
   res.json(['Welcome to Octopoda version: 1 ']);
-  // res.send('Hello World!');
 });
 
 app.use('/users', getUsers);
 
 app.use('/users', postUsers);
 
-
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
+  console.log(`Example app listening on port http://localhost:${port}`);
 });
