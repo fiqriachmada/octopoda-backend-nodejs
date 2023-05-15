@@ -38,14 +38,12 @@ getUsers.get('/', async (req, res) => {
           links: {
             ...(page < totalPages
               ? {
-                  next: `https://api-harry-potter-app.cyclic.app/users?page=${
-                    page + 1
-                  }`,
+                  next: `https://api-octopoda.glitch.me/users?page=${page + 1}`,
                 }
               : {}),
             ...(page > 1 && page <= totalPages
               ? {
-                  previous: `https://api-harry-potter-app.cyclic.app/users?page=${
+                  previous: `https://api-octopoda.glitch.me/users?page=${
                     page - 1
                   }`,
                 }
