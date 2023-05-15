@@ -4,8 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "nodemon app.js",
-    "start": "node app.js",
-    "seed": "node seed/seed.js"
+    "start": "node app.js"
   },
   "engines": {
     "node": "18.0.0"
