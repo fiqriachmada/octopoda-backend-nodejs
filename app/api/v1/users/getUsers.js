@@ -60,7 +60,7 @@ getUsers.get('/', async (req, res) => {
     (await connection()).end();
   } catch (err) {
     console.log(err);
-    res.status(500).send('Error retrieving users');
+    res.status(500).res('Error retrieving users');
   }
 });
 
