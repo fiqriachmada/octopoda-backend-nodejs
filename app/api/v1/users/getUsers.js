@@ -1,4 +1,4 @@
-const { Router, json } = require('express');
+const { Router } = require('express');
 const { connection } = require('../database/database');
 
 const getUsers = Router();
