@@ -40,6 +40,6 @@ app.use('/users', getUsers);
 
 app.use('/users', postUsers);
 
-// app.listen(port, () => {
-//   console.log(`Example app listening on port http://localhost:${port}`);
-// });
+app.listen(port, () => {
+  console.log(`Example app listening on port 0.0.0.0::${port}`);
+});
