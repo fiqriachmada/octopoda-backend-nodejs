@@ -44,3 +44,5 @@ app.use('/users', postUsers);
 app.listen(port, () => {
   console.log(`Example app listening on port 0.0.0.0::${port}`);
 });
+
+module.exports = app;
