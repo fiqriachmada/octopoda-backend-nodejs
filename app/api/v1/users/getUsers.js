@@ -55,7 +55,7 @@ getUsers.get('/', async (req, res) => {
 
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.json(response);
-    (await connection()).end();
+    // (await connection()).end();
   } catch (err) {
     console.log(err);
     res
