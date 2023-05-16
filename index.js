@@ -4,10 +4,9 @@ const cors = require('cors');
 
 const bodyParser = require('body-parser');
 const getUsers = require('./app/api/v1/users/getUsers');
-const { getClient, connection } = require('./app/api/v1/database/database');
+const { connection } = require('./app/api/v1/database/database');
 
 const app = express();
-const port = process.env.PORT || 5000;
 
 app.use(cors());
 
@@ -33,16 +32,9 @@ app.use('/users', getUsers);
 
 app.use('/users', postUsers);
 
-// const port = 5001;
-
-// app.listen(port, () => {
-//   console.log(
-//     'App is Listening...and the server is up to port 0.0.0.0:' + port
-//   );
-// });
-
+const port = process.env.PORT || 3000;
 app.listen(port, () => {
-  console.log(`Example app listening on port 0.0.0.0::${port}`);
+  console.log(`Listening on port ${port}`);
 });
 
 module.exports = app;
