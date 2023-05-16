@@ -7,7 +7,7 @@ const getUsers = require('./app/api/v1/users/getUsers');
 const { getClient, connection } = require('./app/api/v1/database/database');
 
 const app = express();
-const port = process.env.PORT || 5000;
+// const port = process.env.PORT || 5000;
 
 app.use(cors());
 
@@ -40,6 +40,15 @@ app.use('/users', getUsers);
 
 app.use('/users', postUsers);
 
+
+const port = 5001;
+
 app.listen(port, () => {
-  console.log(`Example app listening on port 0.0.0.0::${port}`);
+  console.log(
+    'App is Listening...and the server is up to port http://localhost:' + port
+  );
 });
+
+// app.listen(port, () => {
+//   console.log(`Example app listening on port 0.0.0.0::${port}`);
+// });
