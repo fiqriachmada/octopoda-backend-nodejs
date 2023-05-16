@@ -2,16 +2,19 @@
 FROM node:16
 
 # Set the working directory in the container
-WORKDIR /app
+WORKDIR /usr/src/app
 
 # Copy the application files into the working directory
-COPY . /app
+COPY package*.json ./
 
 # Install the application dependencies
 RUN npm install
 
 # Expose the port on which the application will listen
-EXPOSE 8080
+# EXPOSE 8080
+COPY . .
+
+EXPOSE 3000
 
 # Define the entry point for the container
-CMD ["npm", "start"]
+CMD ["node", "index.js"]
