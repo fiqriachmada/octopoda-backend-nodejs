@@ -30,10 +30,14 @@ const connection = async () => {
 async function getConnection() {
   console.log('>>>> Connecting to YugabyteDB!');
   try {
-    console.log('>>>> Connected to YugabyteDB! with Host '+ databaseHost);
-    return await config.connect();
+    const connected = await config.connect();
+    console.log('>>>> Connected to YugabyteDB! with Host ' + databaseHost);
+    return connected;
   } catch (err) {
-    console.log('>>>> Connection Failed to YugabyteDB! with Host '+ databaseHost, 'Error: ');
+    console.log(
+      '>>>> Connection Failed to YugabyteDB! with Host ' + databaseHost,
+      'Error: '
+    );
     console.log(err);
   }
 }
