@@ -20,7 +20,7 @@ app.get('/', async (req, res) => {
   //   await client.connect(); // Connect to the database
   const result = await (await connection()).query('SELECT * FROM Users'); // Execute your query
   console.log(result.rows); // Log the results
-  res.json({ status: 'ok', result });
+  res.json({ status: res.statusCode, data: result.rows });
   // } catch (error) {
   //   console.error(error);
   //   res.status(500).json({ error: 'Internal server error' });
@@ -40,12 +40,11 @@ app.use('/users', getUsers);
 
 app.use('/users', postUsers);
 
-
 const port = 5001;
 
 app.listen(port, () => {
   console.log(
-    'App is Listening...and the server is up to port http://localhost:' + port
+    'App is Listening...and the server is up to port 0.0.0.0:' + port
   );
 });
 
