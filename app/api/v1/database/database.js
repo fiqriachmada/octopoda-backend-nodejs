@@ -20,11 +20,22 @@ const config = new pg.Pool({
     rejectUnauthorized: true,
     ca: fs.readFileSync('./root.crt').toString(),
   },
-  connectionTimeoutMillis: 5000000000000000000000,
+  connectionTimeoutMillis: 5000000,
 });
 
+// const connection = async () => {
+//   return await getConnection();
+// };
+
 const connection = async () => {
-  return await getConnection();
+  try {
+    const pool = await getConnection();
+    console.log('Successfully connected to database!');
+    return pool;
+  } catch (err) {
+    console.error('Error connecting to database:', err);
+    throw new Error('Unable to establish a connection to the database');
+  }
 };
 
 async function getConnection() {
