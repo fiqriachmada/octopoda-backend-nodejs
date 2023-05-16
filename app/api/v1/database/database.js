@@ -20,7 +20,7 @@ const config = new pg.Pool({
     rejectUnauthorized: true,
     ca: fs.readFileSync('./root.crt').toString(),
   },
-  connectionTimeoutMillis: 5000,
+  connectionTimeoutMillis: 50000,
 });
 
 const connection = async () => {
