@@ -23,9 +23,7 @@ const config = new pg.Pool({
   connectionTimeoutMillis: 5000000,
 });
 
-// const connection = async () => {
-//   return await getConnection();
-// };
+let countdown = 5000000 / 1000;
 
 const connection = async () => {
   try {
@@ -38,11 +36,20 @@ const connection = async () => {
   }
 };
 
+
 async function getConnection() {
+  let intervalId = setInterval(() => {
+    countdown--;
+    console.log(
+      `>>>> Connecting to YugabyteDB! Timeout in ${countdown} seconds...`
+    );
+  }, 1000);
   console.log('>>>> Connecting to YugabyteDB!');
+  intervalId;
   try {
     const connected = await config.connect();
     console.log('>>>> Connected to YugabyteDB! with Host ' + databaseHost);
+    clearInterval(intervalId);
     return connected;
   } catch (err) {
     console.log(
