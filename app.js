@@ -17,7 +17,8 @@ app.use(bodyParser.json());
 app.get('/', async (req, res) => {
   const { rows: connected } = await (await connection()).query('SELECT NOW()');
   console.log('connected[0].now', connected[0].now);
-  res.json(['Welcome to Octopoda version: 1 ', connected[0].now]);
+  const response = [{ version: '1', time: connected[0].now }];
+  res.json(response[0]);
 });
 
 app.use('/users', getUsers);
